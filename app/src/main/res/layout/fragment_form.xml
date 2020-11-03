@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.sofie_android_development_test.app.ui.fragment.form.FormViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FAFAFA"
+        tools:context=".app.ui.fragment.form.FormFragment">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_email"
+            style="@style/DefaultTextInputLayout"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:enabled="true"
+            app:errorEnabled="true"
+            app:error="@{viewModel.emailErrorMessage}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/input_email"
+                style="@style/TextInputEditText"
+                android:onTextChanged="@{viewModel::onEmailChanged}"
+                android:hint="@string/form_hint_email"
+                android:inputType="textEmailAddress"
+                android:text="@{viewModel.email}"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_task"
+            style="@style/DefaultTextInputLayout"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:enabled="true"
+            app:error="@{viewModel.taskNameErrorMessage}"
+            app:errorEnabled="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/til_email">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/input_task"
+                style="@style/TextInputEditText"
+                android:hint="@string/form_hint_title"
+                android:inputType="text"
+                android:onTextChanged="@{viewModel::onTaskNameChanged}"
+                android:text="@{viewModel.taskName}" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/label_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/form_hint_description"
+            android:textSize="16sp"
+            android:textColor="#55000000"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/til_task"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_desc"
+            style="@style/DefaultTextInputLayout"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:enabled="true"
+            app:errorEnabled="true"
+            app:error="@{viewModel.taskDescriptionErrorMessage}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/label_description">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/input_desc"
+                style="@style/TextInputEditText"
+                android:background="@drawable/border_shape"
+                android:gravity="top|start"
+                android:inputType="textCapSentences|textMultiLine"
+                android:lines="6"
+                android:padding="8dp"
+                android:onTextChanged="@{viewModel::onTaskDescriptionChanged}"
+                android:text="@{viewModel.taskDescription}"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

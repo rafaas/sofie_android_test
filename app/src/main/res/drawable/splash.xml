@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:opacity="opaque">
+    <item>
+        <color android:color="@android:color/white"/>
+    </item>
+    <item>
+        <bitmap android:src="@drawable/sofie_launch_rectangle" android:gravity="center"/>
+    </item>
+    <item android:drawable="@drawable/ic_check_white_72dp" android:gravity="center" />
+</layer-list>
