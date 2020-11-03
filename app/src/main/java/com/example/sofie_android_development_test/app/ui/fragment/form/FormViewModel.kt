@@ -2,6 +2,7 @@ package com.example.sofie_android_development_test.app.ui.fragment.form
 
 import android.content.Context
 import androidx.lifecycle.*
+import com.example.sofie_android_development_test.R
 import com.example.sofie_android_development_test.app.util.hasMinChars
 import com.example.sofie_android_development_test.app.util.isEmailValid
 
@@ -34,17 +35,17 @@ class FormViewModel(val context: Context) : ViewModel() {
 
     val emailErrorMessage = Transformations.map(_email){ input ->
         if(isEmailValid(input)) return@map ""
-        return@map "Email inválido, por favor inseria um e-mail válido"
+        return@map context.resources.getString(R.string.invalid_email_error)
     }
 
     val taskNameErrorMessage = Transformations.map(_taskName){ input ->
         if(hasMinChars(input, 2)) return@map ""
-        return@map "Inclua uma tarefa válida"
+        return@map context.resources.getString(R.string.invalid_task_error)
     }
 
     val taskDescriptionErrorMessage = Transformations.map(_taskDescription){ input ->
         if(hasMinChars(input, 2)) return@map ""
-        return@map "Inclua uma descrição válida"
+        return@map context.resources.getString(R.string.invalid_description_error)
     }
 
     @Suppress("UNUSED_PARAMETER")

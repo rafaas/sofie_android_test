@@ -14,4 +14,9 @@
     <string name="alert_title_validation_error">"Ops! Algo deu errado"</string>
     <string name="alert_message_validation_error">"Preencha os campos corretamente e tente novamente"</string>
     <string name="alert_positive_button_text">Entendi</string>
+
+    <string name="task_success">Tarefa cadastrada com sucesso</string>
+    <string name="invalid_email_error">"Email inválido, por favor inseria um e-mail válido"</string>
+    <string name="invalid_task_error">Inclua uma tarefa válida</string>
+    <string name="invalid_description_error">Inclua uma descrição válida</string>
 </resources>

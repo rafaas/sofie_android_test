@@ -12,11 +12,10 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import com.example.sofie_android_development_test.R
 
 abstract class FormFragment : Fragment() {
-
     private val formViewModel by viewModel<FormViewModel>()
     protected abstract val toolbarTitle: String
 
-    override fun onCreateView(
+    final override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
@@ -27,10 +26,9 @@ abstract class FormFragment : Fragment() {
         val view = binding.root
         binding.setVariable(com.example.sofie_android_development_test.BR.viewModel, formViewModel)
         return view
-
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    final override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         activity?.title = toolbarTitle
 
@@ -38,9 +36,11 @@ abstract class FormFragment : Fragment() {
         formViewModel.email.observe(viewLifecycleOwner, Observer {})
         formViewModel.taskName.observe(viewLifecycleOwner, Observer {})
         formViewModel.taskDescription.observe(viewLifecycleOwner, Observer {})
+
+        onViewReady()
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+    final override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val actionBar = (activity as AppCompatActivity?)?.supportActionBar
         actionBar?.let {
@@ -50,8 +50,7 @@ abstract class FormFragment : Fragment() {
         }
     }
 
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
+    final override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         setHasOptionsMenu(true)
     }
@@ -71,6 +70,8 @@ abstract class FormFragment : Fragment() {
 
     protected abstract fun sendTaskSuccess(title: String, email: String, description: String)
 
+    protected abstract fun onViewReady()
+
     private fun validateForm(){
         when(formViewModel.formStatus.value){
             true -> {
@@ -86,12 +87,12 @@ abstract class FormFragment : Fragment() {
         }
     }
 
-    private fun alertBox(title: String, message: String){
+    protected fun alertBox(title: String, message: String){
         val builder = AlertDialog.Builder(requireContext())
         builder.setTitle(title)
         builder.setMessage(message)
-        builder.setPositiveButton(resources.getString(R.string.alert_positive_button_text)){ dialog, _ ->
-            dialog.dismiss()
+        builder.setPositiveButton(resources.getString(R.string.alert_positive_button_text)) {
+                dialog, _ -> dialog.dismiss()
         }
         builder.create().show()
     }

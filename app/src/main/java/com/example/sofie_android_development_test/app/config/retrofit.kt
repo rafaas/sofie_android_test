@@ -29,5 +29,6 @@ internal fun provideRetrofit(okHttpClient: OkHttpClient) = Retrofit.Builder()
     .addCallAdapterFactory(CoroutineCallAdapterFactory())
     .addConverterFactory(MoshiConverterFactory.create(createMoshi()))
     .client(okHttpClient)
+    .build()
 
 internal inline fun <reified T> createApi(retrofit: Retrofit) = retrofit.create(T::class.java)

@@ -2,6 +2,7 @@ package com.example.sofie_android_development_test.app
 
 import android.app.Application
 import com.example.sofie_android_development_test.app.config.remoteModule
+import com.example.sofie_android_development_test.app.config.repositoriesModules
 import com.example.sofie_android_development_test.app.config.uiModules
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
@@ -9,7 +10,7 @@ import org.koin.core.context.startKoin
 class App : Application() {
 
     private val appModules by lazy {
-        listOf(remoteModule, uiModules)
+        listOf(remoteModule, repositoriesModules, uiModules)
     }
 
     override fun onCreate() {

@@ -13,22 +13,4 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
     }
-
-    override fun onResume() {
-        super.onResume()
-        resetActionBar()
-    }
-
-    override fun onBackPressed() {
-        super.onBackPressed()
-        resetActionBar()
-    }
-
-    private fun resetActionBar(){
-        title = resources.getString(R.string.app_name)
-        supportActionBar?.let {
-            it.setDisplayHomeAsUpEnabled(false)
-            it.setDisplayShowHomeEnabled(false)
-        }
-    }
 }
